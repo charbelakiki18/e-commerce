@@ -1,0 +1,17 @@
+<h2>Product List</h2>
+<label for="categories">Categories </label>
+<select #categories (change)="onCategoryChange(categories.value)" >
+  <option value="men's clothing">Men</option>
+  <option value="jewelery">Jewelery</option>
+  <option value="electronics">Electronics</option>
+  <option value="women's clothing">Women</option>
+</select>
+    <ul *ngFor="let product of filtered_products">
+      <li>
+        <img src={{product.image}} class="img">
+        <p>Title: {{product.title}}</p>
+        <p>ID: {{product.id}}</p>
+        <p>Price: {{product.price}}</p>
+        <p>Description: {{product.description}}</p>
+      </li>
+    </ul>

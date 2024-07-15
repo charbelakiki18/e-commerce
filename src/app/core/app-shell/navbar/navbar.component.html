@@ -1,0 +1,17 @@
+<div id="navbar">
+    <p id="title">Exclusive</p>
+    <div id="navigation">
+        <p>Home</p>
+        <p>Contact</p>
+        <p>About</p>
+        <p>Sign Up</p>
+    </div>
+    <div id="search">
+        <input id="search-bar" type="text" #search placeholder="What are you looking for?">
+        <button (click)="sendData(search.value)">Go</button>
+    </div>
+    <div id="icons">
+        <i class="fas fa-heart"></i>
+        <i class="fas fa-shopping-cart"></i>
+    </div>
+</div>
