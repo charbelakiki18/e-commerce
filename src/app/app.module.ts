@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './features/product-listing/components/products/products.component';
 import { NavbarComponent } from './core/app-shell/navbar/navbar.component';
 import { SignUpComponent } from './core/auth/components/sign-up/sign-up.component';
-import { SignInComponent } from './sign-in/sign-in.component';
+import { SignInComponent } from './core/auth/components/sign-in/sign-in.component';
 
 
 @NgModule({

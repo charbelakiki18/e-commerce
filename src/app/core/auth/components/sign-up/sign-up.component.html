@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div id="page">
     <div id="img">
         <img src="sign-up.png" width="700px">
@@ -7,20 +8,43 @@
 
             <p id="title">Create an account</p>
             <p>Enter your details below</p>
-        <div><form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-            <input id="firs-name" type="text" formControlName = "Firstname" placeholder="First Name">
+            <div>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <input id="first-name" type="text" formControlName = "Firstname" placeholder="First Name">
+            <div *ngIf="Firstname?.invalid && (Firstname?.dirty || Firstname?.touched)" class="error">
+                <div *ngIf="Firstname?.errors?.['required']" style="color: red">First Name is required.</div>
+            </div>
         
             <input id="last-name" type="text" formControlName = "Lastname" placeholder="Last Name">
-        
+            <div *ngIf="Lastname?.invalid && (Lastname?.dirty || Lastname?.touched)" class="error">
+                <div *ngIf="Lastname?.errors?.['required']" style="color: red">Last Name is required.</div>
+            </div>
+
             <input id="email" type="email" formControlName = "Email" placeholder="Email">
+            <div *ngIf="Email?.invalid && (Email?.dirty || Email?.touched)" class="error">
+                <div *ngIf="Email?.errors?.['required']" style="color: red">Email is required.</div>
+                <div *ngIf="Email?.errors?.['email']" style="color: red">Invalid Email Format.</div>
+            </div>
         
             <input id="password" type="password" formControlName = "Password" placeholder="Password">
+            <div *ngIf="Password?.invalid && (Password?.dirty || Password?.touched)" class="error">
+                <div *ngIf="Password?.errors?.['required']" style="color: red">Password is required.</div>
+                <div *ngIf="Password?.errors?.['minLength']" style="color: red">Password must be at least 8 characters.</div>
+            </div>
         
-            <button id="acc" type="submit" [disabled]="!signupForm.valid">Create Account</button>
-        </form></div>
+            <button id="acc" type="submit">Create Account</button>
+            <button id="google">
+                <svg id="google-i" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>
+                Sign up with Google
+            </button>
+            <div id="sign-in">
+                <p>Already have an account? <a routerLink="/signin">Log in</a> </p>
+            </div>
+            
+            </form>
+            </div>
         
+        </div>
     </div>
-    </div>
-    
 </div>
 
