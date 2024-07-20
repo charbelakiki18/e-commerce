@@ -1,17 +1,19 @@
 #title{
     font-weight: bold;
-    font-size: 24;
+    font-size: 24px;
     margin-left: 135px;
     margin-right: 192px;
 }
 
 #navbar{
+    justify-content: center;
     display: flex;
     align-items: center;
     height: 93px;
     border-bottom:solid;
     border-bottom-width: 1px;
     border-bottom-color: rgb(233, 231, 231);
+    margin-bottom: 60px;
 }
 
 #search{
@@ -19,6 +21,8 @@
     padding: 10px;
     background-color: #f5f5f5;
     border: none;
+    display: flex;
+    align-items: center;
 }
 
 #search-bar{
@@ -27,15 +31,13 @@
     font-size: 12px;
 }
 
-#icons {
-    margin: 30px;
+.icon {
+    height: 20px;
+    width: 20px;
+    margin-left: 20px;
 }
 
-#icons i{
-    margin: 10px;
-}
-
-#search i:hover{
+.icon:hover{
     cursor: pointer;
 }
 
@@ -45,4 +47,14 @@
 
 #navigation p{
     margin-right: 53px;
+}
+
+#search-icon{
+    height: 20px;
+    width: 20px;
+    margin-left: 25px;
+}
+
+#search-icon:hover{
+    cursor: pointer;
 }

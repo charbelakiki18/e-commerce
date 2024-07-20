@@ -1,0 +1,26 @@
+<div id="page">
+    <div id="img">
+        <img src="sign-up.png" width="700px">
+    </div>
+    <div id="container">
+        <div id="sign-up">
+
+            <p id="title">Create an account</p>
+            <p>Enter your details below</p>
+        <div><form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+            <input id="firs-name" type="text" formControlName = "Firstname" placeholder="First Name">
+        
+            <input id="last-name" type="text" formControlName = "Lastname" placeholder="Last Name">
+        
+            <input id="email" type="email" formControlName = "Email" placeholder="Email">
+        
+            <input id="password" type="password" formControlName = "Password" placeholder="Password">
+        
+            <button id="acc" type="submit" [disabled]="!signupForm.valid">Create Account</button>
+        </form></div>
+        
+    </div>
+    </div>
+    
+</div>
+

@@ -1,0 +1,44 @@
+#page{
+    display: flex;
+}
+
+#title{
+    font-size: 36px;;
+}
+
+#container{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+#sign-up{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+#acc{
+    color:#FAFAFA;
+    width: 100%;
+    font-size: 16px;
+    background-color: #DB4444;
+    height: 56px;
+    width: 371px;
+    border-radius: 5px;
+}
+
+input{
+    align-items: center;
+    margin-bottom: 20px;
+    border-width:3px;
+    width: 78%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid;
+    padding: 10px;
+    border-color: rgb(163, 163, 163);
+}
