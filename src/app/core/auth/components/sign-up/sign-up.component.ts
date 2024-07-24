@@ -35,7 +35,7 @@ get Password() {
   Lastname : ['', Validators.required],
   Email : ['', [Validators.email, Validators.required]],
   Password : ['', [Validators.required, Validators.minLength(8)]],
-  RoleName : ['nothing'],
+  RoleName : ['USER'],
 
 })
    ngOnInit(): void {

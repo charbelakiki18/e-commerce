@@ -1,4 +1,7 @@
 <app-navbar></app-navbar>
+<ng-template ngxPermissionsOnly="ADMIN">
+  <div>Welcome Admin</div>
+</ng-template>
 <h2>Product List</h2>
 <label for="categories">Categories </label>
 <select #categories (change)="onCategoryChange(categories.value)" >

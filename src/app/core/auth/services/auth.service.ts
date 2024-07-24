@@ -16,6 +16,10 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
   
+  signUpAdmin(signupForm: any): Observable<SignUpResponse>{
+    console.log(signupForm);
+    return this.http.post<SignUpResponse>('http://173.249.40.235:5005/api/User/CreateAdminUser()',signupForm)
+  }
 
   signUp(signupForm: any): Observable<SignUpResponse>{
     console.log(signupForm);
