@@ -1,9 +1,14 @@
-import { SignInRequest } from '../../../models/authentication';
 import { createReducer, on } from '@ngrx/store';
-import { login } from './signin.actions';
+import { login } from './auth.actions';
+import { SignInRequest } from '../models/authentication';
 
 export interface AuthState {
   user: SignInRequest | undefined
+}
+
+export interface AppState {
+  auth: AuthState;
+  // Add other feature states here as needed
 }
 
 export const initialAuthState: AuthState = {
@@ -14,7 +19,7 @@ export const authReducer = createReducer(
 
   initialAuthState,
 
-  on(login, (state, action) => {
+  on(login, (_state, action) => {
       return {
           user: action.user
       }

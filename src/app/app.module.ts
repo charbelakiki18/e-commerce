@@ -17,7 +17,10 @@ import { AgTableComponent } from './ag-grid/ag-table/ag-table.component';
 import { IsAvailableChipComponent } from './ag-grid/is-available-chip/is-available-chip.component';
 import { AgDeleteButtonComponent } from './ag-grid/ag-delete-button/ag-delete-button.component';
 import { StoreModule } from '@ngrx/store';
-import { authReducer } from './core/auth/components/sign-in/state/signin.reducer';
+import { authReducer } from './core/auth/state/auth.reducer';
+import { productReducer } from './features/product-listing/state/products.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { ProductEffects } from './features/product-listing/state/products.effects';
 
 
 @NgModule({
@@ -38,10 +41,12 @@ import { authReducer } from './core/auth/components/sign-in/state/signin.reducer
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({
-      signin: authReducer
+      'auth': authReducer,
+      products: productReducer
     }),
     NgxPermissionsModule.forRoot(),
     AgTableComponent,
+    EffectsModule.forRoot([ProductEffects]),
 ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor,

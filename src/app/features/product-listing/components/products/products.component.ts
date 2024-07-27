@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../../models/product';
 import { DataService } from '../../../../data.service';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { ProductState } from '../../state/products.reducers';
+import { loadProducts } from '../../state/products.actions';
 
 @Component({
   selector: 'app-products',
@@ -9,21 +13,21 @@ import { DataService } from '../../../../data.service';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit{
+  products$: Observable<Product[]>;
 
-  constructor(private productService: ProductsService, private dataService:DataService) { }
-public products: Product[]= [];
+  constructor(private store: Store<{ products: ProductState }>) {
+    this.products$ = this.store.pipe(select(state => state.products.products));
+  }
 public filtered_products: Product[]= [];
+public products: Product[] = [];
 search: any
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data) => {
+    this.store.dispatch(loadProducts());
+    this.products$.subscribe(data => {
+      console.log(data);
       this.products = data;
-      console.log(this.products)
     });
-    this.dataService.currentData.subscribe(data => {
-      this.search = data;
-      this.onSearch(this.search)
-    })
 
   }
 

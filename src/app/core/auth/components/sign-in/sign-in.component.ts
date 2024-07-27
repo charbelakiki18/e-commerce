@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { tap } from 'rxjs';
-import { login } from './state/signin.actions';
+import { login } from '../../state/auth.actions';
 import { noop } from 'rxjs';
 
 @Component({
@@ -51,5 +51,7 @@ export class SignInComponent implements OnInit{
         this.success = false;
       }
   );
+  
 
 }}
+
