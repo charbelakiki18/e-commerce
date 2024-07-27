@@ -3,15 +3,20 @@ import { FormBuilder } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { tap } from 'rxjs';
+import { login } from './state/signin.actions';
+import { noop } from 'rxjs';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss'
 })
+
 export class SignInComponent implements OnInit{
   success: Boolean = true;
-  constructor(private fb: FormBuilder, private authService:AuthService, private router:Router) {
+  constructor(private fb: FormBuilder, private authService:AuthService, private router:Router, private store: Store) {
   }
   signInForm = this.fb.group({
    Username : ['', Validators.required],
@@ -32,18 +37,19 @@ export class SignInComponent implements OnInit{
    }
  
    onSubmit() {
-    localStorage.clear();
-     if (this.signInForm.valid) {
-       console.log('Form Submitted', this.signInForm.value);
-       this.authService.signIn(this.signInForm.value).subscribe(res => {
-          this.success = true;
-          console.log(res);
-          localStorage.setItem('token',res.Login.AccessToken);
-          this.router.navigate(['/products']);
-       })
-       this.success = false;
-      this.router.navigate(['/signin']);
-     }
-   }
+    const val = this.signInForm.value;
+    this.authService.signIn(val).pipe(
+      
+      tap(user => {
+        this.store.dispatch(login({user: {Username: val.Username, Password: val.Password}}));
+        this.router.navigateByUrl('/products');
 
-}
+    })
+  )          .subscribe(
+      noop,
+      () => {
+        this.success = false;
+      }
+  );
+
+}}

@@ -16,6 +16,8 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 import { AgTableComponent } from './ag-grid/ag-table/ag-table.component';
 import { IsAvailableChipComponent } from './ag-grid/is-available-chip/is-available-chip.component';
 import { AgDeleteButtonComponent } from './ag-grid/ag-delete-button/ag-delete-button.component';
+import { StoreModule } from '@ngrx/store';
+import { authReducer } from './core/auth/components/sign-in/state/signin.reducer';
 
 
 @NgModule({
@@ -35,8 +37,11 @@ import { AgDeleteButtonComponent } from './ag-grid/ag-delete-button/ag-delete-bu
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot({
+      signin: authReducer
+    }),
     NgxPermissionsModule.forRoot(),
-    AgTableComponent
+    AgTableComponent,
 ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor,

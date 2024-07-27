@@ -1,6 +1,6 @@
 export interface SignInRequest{
-    Username: string;
-    Password: string;
+    Username: string | null | undefined;
+    Password: string | null | undefined;
 }
 
 export interface SignInResponse{
