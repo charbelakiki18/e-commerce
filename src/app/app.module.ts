@@ -21,6 +21,8 @@ import { authReducer } from './core/auth/state/auth.reducer';
 import { productReducer } from './features/product-listing/state/products.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './features/product-listing/state/products.effects';
+import { AuthEffects } from './core/auth/state/auth.effects';
+import { AuthGuard } from './core/auth/guards/auth-guard.guard';
 
 
 @NgModule({
@@ -41,17 +43,17 @@ import { ProductEffects } from './features/product-listing/state/products.effect
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot({
-      'auth': authReducer,
+      auth: authReducer,
       products: productReducer
     }),
     NgxPermissionsModule.forRoot(),
     AgTableComponent,
-    EffectsModule.forRoot([ProductEffects]),
+    EffectsModule.forRoot([ProductEffects, AuthEffects]),
 ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor,
     multi: true
-  }],
+  }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

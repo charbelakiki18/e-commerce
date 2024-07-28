@@ -4,8 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { tap } from 'rxjs';
-import { login } from '../../state/auth.actions';
+import { AuthActions } from '../../state/auth.actions';
 import { noop } from 'rxjs';
 
 @Component({
@@ -36,22 +35,12 @@ export class SignInComponent implements OnInit{
     ngOnInit(): void {
    }
  
-   onSubmit() {
-    const val = this.signInForm.value;
-    this.authService.signIn(val).pipe(
-      
-      tap(user => {
-        this.store.dispatch(login({user: {Username: val.Username, Password: val.Password}}));
-        this.router.navigateByUrl('/products');
-
-    })
-  )          .subscribe(
-      noop,
-      () => {
-        this.success = false;
-      }
-  );
-  
-
-}}
-
+   onSubmit(): void {
+    if (this.signInForm.valid) {
+      const credentials = {
+        username: this.signInForm.value.Username || '',
+        password: this.signInForm.value.Password || ''
+      };
+      this.store.dispatch(AuthActions.loginRequest(credentials));
+    }
+  }}

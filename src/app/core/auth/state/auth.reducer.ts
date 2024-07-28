@@ -1,28 +1,19 @@
 import { createReducer, on } from '@ngrx/store';
-import { login } from './auth.actions';
-import { SignInRequest } from '../models/authentication';
+import { AuthActions } from './auth.actions';
 
 export interface AuthState {
-  user: SignInRequest | undefined
+  token: string | null;
+  error: string | null;
 }
 
-export interface AppState {
-  auth: AuthState;
-  // Add other feature states here as needed
-}
-
-export const initialAuthState: AuthState = {
-  user: undefined
+export const initialState: AuthState = {
+  token: localStorage.getItem('token'),
+  error: null
 };
 
 export const authReducer = createReducer(
-
-  initialAuthState,
-
-  on(login, (_state, action) => {
-      return {
-          user: action.user
-      }
-  }),
-
+  initialState,
+  on(AuthActions.loginSuccess, (state, action) => ({ ...state, token: action.token, error: null })),
+  on(AuthActions.loginFailure, (state, action) => ({ ...state, error: action.error })),
+  on(AuthActions.logout, state => ({ ...state, token: null, error: null }))
 );

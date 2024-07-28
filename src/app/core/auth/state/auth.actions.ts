@@ -1,7 +1,18 @@
 import { createAction, props } from '@ngrx/store';
-import { SignInRequest } from '../models/authentication';
 
-export const login = createAction(
-  "[SignIn Page] User Login",
-  props<{user: SignInRequest}>()
-);
+export const AuthActions = {
+  loginRequest: createAction(
+    '[Auth] Login Request',
+    props<{ username: string; password: string }>()
+  ),
+  loginSuccess: createAction(
+    '[Auth] Login Success',
+    props<{ token: string }>()
+  ),
+  loginFailure: createAction(
+    '[Auth] Login Failure',
+    props<{ error: string }>()
+  ),
+  logout: createAction('[Auth] Logout')
+};
+

@@ -10,9 +10,9 @@
   <option value="electronics">Electronics</option>
   <option value="women's clothing">Women</option>
 </select>
-    <ul *ngFor="let product of filtered_products">
+    <ul *ngFor="let product of filtered_products; trackBy: trackByFn">
       <li>
-        <img src={{product.image}} class="img">
+        <img src={{product.image}} class="img" alt={{product.title}}>
         <p>Title: {{product.title}}</p>
         <p>ID: {{product.id}}</p>
         <p>Price: {{product.price}}</p>

@@ -26,9 +26,9 @@ export class AuthService {
     return this.http.post<SignUpResponse>('http://173.249.40.235:5005/api/User/SignUp()',signupForm)
   }
 
-  signIn(signInForm: any): Observable<SignInResponse>{
-    console.log(signInForm);
-    return this.http.post<SignInResponse>('http://173.249.40.235:5005/api/User/Login()',signInForm)
+  signIn(credentials: {Username: string, Password: string}): Observable<SignInResponse>{
+    console.log("InAuthService " + credentials);
+    return this.http.post<SignInResponse>('http://173.249.40.235:5005/api/User/Login()', credentials)
   }
 }
 

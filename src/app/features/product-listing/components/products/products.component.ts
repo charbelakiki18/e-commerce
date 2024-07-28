@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../../models/product';
 import { DataService } from '../../../../data.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { ProductState } from '../../state/products.reducers';
 import { loadProducts } from '../../state/products.actions';
@@ -12,7 +12,7 @@ import { loadProducts } from '../../state/products.actions';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit, OnDestroy{
   products$: Observable<Product[]>;
 
   constructor(private store: Store<{ products: ProductState }>) {
@@ -20,15 +20,24 @@ export class ProductsComponent implements OnInit{
   }
 public filtered_products: Product[]= [];
 public products: Product[] = [];
+private subscription: Subscription = new Subscription;
+
+trackByFn(index: number, item: any): number {
+  return item.id;
+}
 search: any
 
   ngOnInit(): void {
     this.store.dispatch(loadProducts());
-    this.products$.subscribe(data => {
+    this.subscription = this.products$.subscribe(data => {
       console.log(data);
       this.products = data;
     });
 
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe;
   }
 
   onCategoryChange(category: string){
