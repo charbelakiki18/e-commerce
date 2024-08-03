@@ -4,6 +4,7 @@ import { selectIsLoggedIn } from '../../auth/state/auth.selector';
 import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
+import { AuthActions } from '../../auth/state/auth.actions';
 
 @Component({
   selector: 'app-navbar',
@@ -34,7 +35,6 @@ export class NavbarComponent implements OnInit{
   }
 
   logout(){
-    localStorage.clear();
-    window.location.reload();
+    this.store.dispatch(AuthActions.logout());
   }
 }
