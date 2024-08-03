@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar (messageEvent)="receiveSearch($event)"></app-navbar>
 <ng-template ngxPermissionsOnly="ADMIN">
   <div>Welcome Admin</div>
 </ng-template>

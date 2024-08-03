@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { DataService } from '../../../data.service';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +6,11 @@ import { DataService } from '../../../data.service';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  constructor(private dataService:DataService){}
+  constructor(){}
+
+  @Output() messageEvent = new EventEmitter();
 
   sendData(search: string) {
-    this.dataService.changeData(search);
+    this.messageEvent.emit(search)
   }
 }
