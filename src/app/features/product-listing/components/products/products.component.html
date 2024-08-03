@@ -1,21 +1,28 @@
 <app-navbar (messageEvent)="receiveSearch($event)"></app-navbar>
-<ng-template ngxPermissionsOnly="ADMIN">
-  <div>Welcome Admin</div>
-</ng-template>
-<h2>Product List</h2>
-<label for="categories">Categories </label>
-<select #categories (change)="onCategoryChange(categories.value)" >
-  <option value="men's clothing">Men</option>
-  <option value="jewelery">Jewelery</option>
-  <option value="electronics">Electronics</option>
-  <option value="women's clothing">Women</option>
-</select>
-    <ul *ngFor="let product of filtered_products; trackBy: trackByFn">
-      <li>
-        <img src={{product.image}} class="img" alt={{product.title}}>
-        <p>Title: {{product.title}}</p>
-        <p>ID: {{product.id}}</p>
-        <p>Price: {{product.price}}</p>
-        <p>Description: {{product.description}}</p>
+<div id="top-container">
+  <ul id="cat">
+    <li #men value="men's clothing" (click)="onCategoryChange(men.getAttribute('value'))">Men's Fashion</li>
+    <li #women value="women's clothing" (click)="onCategoryChange(women.getAttribute('value'))">Woman's Fashion</li>
+    <li #elec value="electronics" (click)="onCategoryChange(elec.getAttribute('value'))">Electronics</li>
+    <li #jewl value="jewelery" (click)="onCategoryChange(jewl.getAttribute('value'))">Jewelery</li>
+    <li #all value="all" (click)="onCategoryChange(all.getAttribute('value'))">See All</li>
+  </ul>
+  <img src="Frame 560.png">
+</div>
+<div *ngIf="category != empty" id="desc">
+  <div id="cat-rectangle">
+  </div>
+  <div id="cat-desc">{{category}}</div>
+</div>
+
+<div id="products">
+    <ul class="product" *ngFor="let product of filtered_products; trackBy: trackByFn">
+      <li class="item">
+        <img src={{product.image}} class="img" alt={{product.title}} style="background-color: #F5F5F5; padding: 20px;">
+        <p>{{product.title}}</p>
+        <!-- <p>ID: {{product.id}}</p> -->
+        <p style="color: #DB4444;">${{product.price}}</p>
+        <!-- <p>Description: {{product.description}}</p> -->
       </li>
     </ul>
+</div>

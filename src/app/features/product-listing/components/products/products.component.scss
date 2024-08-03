@@ -2,3 +2,64 @@
     height: 200px;
     width: 200px;
 }
+
+#cat{
+    list-style: none;
+    margin: 4%;
+    margin-left: 8%;
+    border-right: solid;
+    border-color: #E8E8E8;
+    width: 15%;
+}
+
+#cat li{
+    margin-bottom: 20px;
+}
+
+#cat li:hover{
+    cursor: pointer;
+    color: red;
+    transition: 0.75s;
+}
+
+#top-container{
+    display: flex;
+
+}
+
+#products{
+  margin-left: 10%;
+  margin-top: 4%;
+  display: flex;         /* Use Flexbox layout */
+  flex-wrap: wrap;       /* Wrap the items if they don't fit in one row */
+  padding: 0;            
+}
+
+#desc{
+    margin-left: 8%;
+    margin-top: 4%;
+    display: flex;
+}
+
+#cat-rectangle{
+    background-color: #DB4444;
+    width: 20px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#cat-desc{
+    margin-top: 1%;
+    color: #DB4444;
+    margin-left: 2%;
+    font-weight: bold;
+}
+
+.product{
+  list-style: none;
+  margin: 10px;          /* Add some margin between items */
+  width: 20%;       /* Flex-grow, flex-shrink, and base size */
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+  border: none; /* Optional: Add a border to each item */
+  padding: 10px; 
+}

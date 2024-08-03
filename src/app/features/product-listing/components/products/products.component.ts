@@ -15,6 +15,8 @@ export class ProductsComponent implements OnInit, OnDestroy{
   public filtered_products: Product[]= [];
   public products: Product[] = [];
   private subscription: Subscription = new Subscription;
+  empty: string = "";
+  category: string | undefined = "";
 
   constructor(private store: Store<{ products: ProductState }>) {
     this.products$ = this.store.pipe(select(state => state.products.products));
@@ -38,8 +40,15 @@ export class ProductsComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe;
   }
 
-  onCategoryChange(category: string){
-    this.filtered_products = this.products.filter(product => product.category === category);
+  onCategoryChange(category: string | null){
+    if(category === "all"){
+      this.filtered_products = this.products;
+      
+    }
+    else{
+      this.filtered_products = this.products.filter(product => product.category === category);
+    }
+    this.category = category?.toUpperCase();
     console.log(this.filtered_products)
   }
 
