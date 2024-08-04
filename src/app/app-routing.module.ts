@@ -5,13 +5,15 @@ import { SignInComponent } from './core/auth/components/sign-in/sign-in.componen
 import { ProductsComponent } from './features/product-listing/components/products/products.component';
 import { AuthGuard } from './core/auth/guards/auth-guard.guard';
 import { SignUpAdminComponent } from './core/auth/components/sign-up-admin/sign-up-admin.component';
+import { ProductDetailsComponent } from './features/product-details/components/product-details/product-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: SignInComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'signup-admin', component: SignUpAdminComponent },
-  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] }
+  { path: 'products', component: ProductsComponent, canActivate: [AuthGuard] },
+  { path: 'product-details', component: ProductDetailsComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

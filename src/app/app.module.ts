@@ -23,6 +23,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ProductEffects } from './features/product-listing/state/products.effects';
 import { AuthEffects } from './core/auth/state/auth.effects';
 import { AuthGuard } from './core/auth/guards/auth-guard.guard';
+import { ProductDetailsComponent } from './features/product-details/components/product-details/product-details.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AuthGuard } from './core/auth/guards/auth-guard.guard';
     SignInComponent,
     SignUpAdminComponent,
     IsAvailableChipComponent,
-    AgDeleteButtonComponent
+    AgDeleteButtonComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

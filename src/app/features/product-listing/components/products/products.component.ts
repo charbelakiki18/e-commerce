@@ -4,6 +4,8 @@ import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { ProductState } from '../../state/products.reducers';
 import { loadProducts } from '../../state/products.actions';
+import { Router } from '@angular/router';
+import { DataService } from '../../../../services/data.service';
 
 @Component({
   selector: 'app-products',
@@ -18,7 +20,7 @@ export class ProductsComponent implements OnInit, OnDestroy{
   empty: string = "";
   category: string | undefined = "";
 
-  constructor(private store: Store<{ products: ProductState }>) {
+  constructor(private store: Store<{ products: ProductState }>,private router: Router,private service: DataService) {
     this.products$ = this.store.pipe(select(state => state.products.products));
   }
 
@@ -33,6 +35,11 @@ export class ProductsComponent implements OnInit, OnDestroy{
       console.log(data);
       this.products = data;
     });
+    this.service.search$.subscribe(data => {
+      if(data != ""){
+        this.onSearch(data);
+      }
+    })
 
   }
 
@@ -67,6 +74,11 @@ export class ProductsComponent implements OnInit, OnDestroy{
     });
     console.log(search)
     console.log(this.filtered_products)
+  }
+
+  goToProductDetails(id: number){
+    this.service.setData(this.products[id-1]);
+    this.router.navigateByUrl('/product-details')
   }
 
 }

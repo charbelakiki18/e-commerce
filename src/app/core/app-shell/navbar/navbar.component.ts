@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { selectIsLoggedIn } from '../../auth/state/auth.selector';
-import { select } from '@ngrx/store';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
 import { AuthActions } from '../../auth/state/auth.actions';
@@ -19,7 +18,7 @@ export class NavbarComponent implements OnInit{
       map(isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
       })
-    ).subscribe(); // Ensure to subscribe to the observable
+    ).subscribe();
   }
 
   ngOnInit() {

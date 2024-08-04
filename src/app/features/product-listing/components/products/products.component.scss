@@ -30,8 +30,8 @@
 #products{
   margin-left: 10%;
   margin-top: 4%;
-  display: flex;         /* Use Flexbox layout */
-  flex-wrap: wrap;       /* Wrap the items if they don't fit in one row */
+  display: flex;   
+  flex-wrap: wrap;       
   padding: 0;            
 }
 
@@ -57,9 +57,14 @@
 
 .product{
   list-style: none;
-  margin: 10px;          /* Add some margin between items */
-  width: 20%;       /* Flex-grow, flex-shrink, and base size */
-  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-  border: none; /* Optional: Add a border to each item */
+  margin: 10px;          
+  width: 20%;       
+  box-sizing: border-box; 
+  border: none; 
   padding: 10px; 
 }
+
+.product:hover{
+    cursor: pointer;
+}
+

@@ -17,7 +17,7 @@
 
 <div id="products">
     <ul class="product" *ngFor="let product of filtered_products; trackBy: trackByFn">
-      <li class="item">
+      <li class="item" (click)="goToProductDetails(product.id)">
         <img src={{product.image}} class="img" alt={{product.title}} style="background-color: #F5F5F5; padding: 20px;">
         <p>{{product.title}}</p>
         <!-- <p>ID: {{product.id}}</p> -->
