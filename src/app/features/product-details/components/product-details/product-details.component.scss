@@ -74,6 +74,7 @@ img{
 #container-submit{
     display: flex;
     margin: 4%;
+    margin-left: 0;
 }
 
 button{
@@ -97,4 +98,36 @@ button{
     margin-top: 3px;
     margin-left: 4%;
     border-radius: 10px;
+}
+
+#heart:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #DB4444;
+}
+
+#cont1{
+    display: flex;
+    border: solid 1px;
+    border-color: #808080;
+}
+
+#cont2{
+    display: flex;
+    border: solid 1px;
+    border-color: #808080;
+    border-top: none;
+}
+.icon{
+    margin: 5%;
+    height: 40px;
+    width: 40px;
+}
+
+.t{
+    font-size: 16px;
+}
+
+.d{
+    font-size: 12px;
 }
