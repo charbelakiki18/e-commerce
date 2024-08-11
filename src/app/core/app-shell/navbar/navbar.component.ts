@@ -36,4 +36,8 @@ export class NavbarComponent implements OnInit{
   logout(){
     this.store.dispatch(AuthActions.logout());
   }
+
+  goToCart(){
+    this.router.navigateByUrl("/cart")
+  }
 }

@@ -24,6 +24,7 @@ import { ProductEffects } from './features/product-listing/state/products.effect
 import { AuthEffects } from './core/auth/state/auth.effects';
 import { AuthGuard } from './core/auth/guards/auth-guard.guard';
 import { ProductDetailsComponent } from './features/product-details/components/product-details/product-details.component';
+import { CartComponent } from './features/cart/components/cart/cart.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ProductDetailsComponent } from './features/product-details/components/p
     SignUpAdminComponent,
     IsAvailableChipComponent,
     AgDeleteButtonComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

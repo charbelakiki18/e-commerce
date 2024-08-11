@@ -1,0 +1,24 @@
+<app-navbar></app-navbar>
+
+<div id="table">
+    <div class="row">
+        <p>Product</p>
+        <p>Price</p>
+        <p>Quantity</p>
+        <p>Subtotal</p>
+    </div>
+    <div>
+        <ul *ngFor="let product of cart">
+            <li class="row">
+                <div>
+                    <img src={{product?.product?.image}} class="img" alt={{product?.product?.title}} style="background-color: #F5F5F5; padding: 20px;">
+                    <p>{{product?.product?.title}}</p>
+                </div>
+                <p style="color: #DB4444;">${{product?.product?.price}}</p>
+                <p>{{product?.qty}}</p>
+                <p>{{getTotal(product)}}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
