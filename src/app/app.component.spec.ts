@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-
+import {render, screen, fireEvent} from '@testing-library/angular';
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -32,4 +32,12 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Hello, e-commerce');
   });
+
+  it('should render counter', async () => {
+    await render('AppComponent', {
+      componentProperties: {counter: 5},
+    })
+
+    expect(screen.getByText('Current Count: 5'));
+  })
 });
