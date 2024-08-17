@@ -5,7 +5,7 @@ import { select, Store } from '@ngrx/store';
 import { ProductState } from './state/products.reducers';
 import { loadProducts } from './state/products.actions';
 import { Router } from '@angular/router';
-import { DataService } from '../../../services/data.service';
+import { DataService } from './services/data.service';
 
 @Component({
   selector: 'app-products',
@@ -47,7 +47,7 @@ export class ProductsComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe;
   }
 
-  onCategoryChange(category: string | null){
+  onCategoryChange(category: String | null){
     if(category === "all"){
       this.filtered_products = this.products;
       
@@ -78,6 +78,8 @@ export class ProductsComponent implements OnInit, OnDestroy{
 
   goToProductDetails(id: number){
     this.service.setData(this.products[id-1]);
+    this.onCategoryChange(this.products[id-1].category);
+    this.service.setSimilarProducts(this.filtered_products);
     this.router.navigateByUrl('/product-details')
   }
 

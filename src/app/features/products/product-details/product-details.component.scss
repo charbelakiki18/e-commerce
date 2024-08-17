@@ -131,3 +131,53 @@ button{
 .d{
     font-size: 12px;
 }
+
+.img{
+    height: 200px;
+    width: 200px;
+    background-color: #F5F5F5; padding: 20px;
+}
+
+#products{
+  margin-left: 10%;
+  margin-top: 4%;
+  display: flex;   
+  flex-wrap: wrap;       
+  padding: 0;            
+}
+
+#desc{
+    margin-left: 8%;
+    margin-top: 4%;
+    display: flex;
+}
+
+#cat-rectangle{
+    background-color: #DB4444;
+    width: 20px;
+    height: 40px;
+    border-radius: 5px;
+}
+
+#cat-desc{
+    margin-top: 1%;
+    color: #DB4444;
+    margin-left: 2%;
+    font-weight: bold;
+}
+
+.product{
+  list-style: none;
+  margin: 10px;  
+  margin-right: 4%;        
+  width: 20%;       
+  box-sizing: border-box; 
+  border: none; 
+  padding: 10px; 
+}
+
+.product:hover{
+    cursor: pointer;
+    border: solid 0.25px;
+    border-color: #DB4444;
+}

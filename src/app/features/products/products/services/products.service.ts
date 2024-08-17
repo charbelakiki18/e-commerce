@@ -13,6 +13,5 @@ export class ProductsService {
 
   getProducts(): Observable<Product[]>{
     return this.http.get<Product[]>(environment.productsApi);
-            
   }
 }

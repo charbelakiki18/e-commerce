@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../../services/data.service';
+import { DataService } from '../products/services/data.service';
 import { Product } from '../../models/product';
 import { Router } from '@angular/router';
 import { CartDataService } from '../../cart/services/cart-data.service';
@@ -15,6 +15,7 @@ export class ProductDetailsComponent implements OnInit {
   p: Product | undefined 
   cart: (Product | undefined)[] = []
   isInCart: boolean = false
+  similarProducts: Product[] = []
   constructor(private service: DataService, private router: Router, private cartService: CartDataService){}
 
   ngOnInit(): void {
@@ -25,6 +26,11 @@ export class ProductDetailsComponent implements OnInit {
       this.isInCart = data;
     })
     this.cartService.isInCart(this.p);
+    this.service.similarProducts$.subscribe(data => {
+      for(let i = 0; i < 4; i++){
+        this.similarProducts[i] = data[i];
+      }
+    })
   }
 
   subQty(){
@@ -53,4 +59,11 @@ export class ProductDetailsComponent implements OnInit {
     this.cartService.isInCart(product);
     console.log(this.cart);
  }
+
+ goToProductDetails(product: Product){
+  this.qty = 0;
+  this.service.setData(product);
+  this.router.navigateByUrl('/product-details')
+  this.cartService.isInCart(product);
+}
 }

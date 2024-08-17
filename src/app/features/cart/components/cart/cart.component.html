@@ -1,26 +1,59 @@
 <app-navbar></app-navbar>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 
-<div id="table">
-    <div class="row">
-        <p>Product</p>
-        <p>Price</p>
-        <p>Quantity</p>
-        <p>Subtotal</p>
-    </div>
-    <div>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <td>Product</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Subtotal</td>
+            <td></td>
+        </tr>
+        </thead>
         @for (product of cart; track $index) {
-            <ul>
-                <li class="row">
-                    <div>
-                        <img src={{product?.product?.image}} class="img" alt={{product?.product?.title}} style="background-color: #F5F5F5; padding: 20px;">
-                        <p>{{product?.product?.title}}</p>
+        <tr>
+            <td>
+                <div id="logo">
+                    <img src={{product?.product?.image}} class="img" alt={{product?.product?.title}}>
+                    <p>{{product?.product?.title}}</p>
+                </div>
+            </td>
+            <td style="color: #DB4444;">${{product?.product?.price}}</td>
+            <td>
+                <div id="container-qty">
+                    <div id="qty"><p>{{product?.qty}}</p></div>
+                    <div id="modify">
+                        <i id="arrow" class="material-icons" (click)="increaseQty(product)">arrow_drop_up</i>
+                        <i id="arrow" class="material-icons" (click)="decreaseQty(product)">arrow_drop_down</i>
                     </div>
-                    <p style="color: #DB4444;">${{product?.product?.price}}</p>
-                    <p>{{product?.qty}}</p>
-                    <p>{{getTotal(product)}}</p>
-                </li>
-            </ul>
+                </div>
+            </td>
+            <td>${{getTotal(product)}}</td>
+            <td>
+                <i id="del" class="material-icons" (click)="removeFromCart(product?.product)">delete</i>
+            </td>
+        </tr>
         }
-    </div>
+    </table>
+    <button id="subTotalBtn" (click)="getSubTotal()">Update Cart</button>
+    <div id="checkout">
+        <p>Cart Total</p>
+        <div class="pricing">
+            <p>Subtotal: </p>
+            <p class="value">${{subTotal}}</p>
+        </div>
+        <div class="pricing">
+            <p>Shipping: </p>
+            <p class="value">Free</p>
+        </div>
+        <div class="pricing" style="border: none;">
+            <p>Total: </p>
+            <p class="value">${{subTotal}}</p>
+        </div>
+        <button>Proceed to Checkout</button>
+    </div>  
 </div>
-

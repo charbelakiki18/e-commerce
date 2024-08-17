@@ -36,6 +36,23 @@
                 <p class="d">Free 30 Days Delivery Returns</p>
             </div>
         </div>
-        
     </div>
+</div>
+<div id="desc">
+    <div id="cat-rectangle"></div>
+    <div id="cat-desc">Related Items</div>
+</div>
+
+<div id="products">
+    @for (product of similarProducts; track $index) {
+        <ul class="product">
+            <li class="item" (click)="goToProductDetails(product)">
+              <img src={{product.image}} class="img" alt={{product.title}}>
+              <p>{{product.title}}</p>
+              <!-- <p>ID: {{product.id}}</p> -->
+              <p style="color: #DB4444;">${{product.price}}</p>
+              <!-- <p>Description: {{product.description}}</p> -->
+            </li>
+          </ul>
+    }
 </div>

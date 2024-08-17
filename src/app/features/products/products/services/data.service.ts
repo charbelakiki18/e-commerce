@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Product } from '../features/models/product';
+import { Product } from '../../../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -12,12 +12,19 @@ export class DataService {
   private dataSubjectSearch = new BehaviorSubject<string>("");
   search$: Observable<string> = this.dataSubjectSearch.asObservable();
 
+  private similarProductsSubject = new BehaviorSubject<Product[]>([]);
+  similarProducts$: Observable<Product[]> = this.similarProductsSubject.asObservable();
+
   setData(newProduct: Product): void {
     this.dataSubject.next(newProduct);
   }
 
   setSearch(newSearch: string){
     this.dataSubjectSearch.next(newSearch);
+  }
+
+  setSimilarProducts(similarProducts: Product[]){
+    this.similarProductsSubject.next(similarProducts);
   }
 
   constructor() { }
