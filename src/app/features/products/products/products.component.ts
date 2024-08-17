@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Product } from '../../../models/product';
+import { Product } from '../../models/product';
 import { Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { ProductState } from '../../state/products.reducers';
-import { loadProducts } from '../../state/products.actions';
+import { ProductState } from './state/products.reducers';
+import { loadProducts } from './state/products.actions';
 import { Router } from '@angular/router';
-import { DataService } from '../../../../services/data.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-products',

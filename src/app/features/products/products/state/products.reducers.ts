@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { Product } from "../../models/product";
+import { Product } from "../../../models/product";
 import { loadProducts, loadProductsFailure, loadProductsSuccess } from "./products.actions";
 
 export interface ProductState {

@@ -33,7 +33,7 @@ export class AuthEffects {
     this.actions$.pipe(
       ofType(AuthActions.logout),
       tap(() => {
-        localStorage.removeItem('token');
+        localStorage.clear();
         this.router.navigate(['/signin']);
       })
     ), { dispatch: false }

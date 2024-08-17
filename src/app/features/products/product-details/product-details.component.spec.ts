@@ -7,7 +7,7 @@ import { provideMockStore } from '@ngrx/store/testing';
 //dont confuse libray testing with the other one
 
 import { ProductDetailsComponent } from './product-details.component';
-import { NavbarComponent } from '../../../../core/app-shell/navbar/navbar.component';
+import { NavbarComponent } from '../../../core/app-shell/shared/components/navbar/navbar.component';
 import { Store, StoreModule } from '@ngrx/store';
 describe('ProductDetailsComponent', () => {
   let component: ProductDetailsComponent;

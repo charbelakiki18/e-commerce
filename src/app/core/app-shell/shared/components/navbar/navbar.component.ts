@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { selectIsLoggedIn } from '../../auth/state/auth.selector';
+import { selectIsLoggedIn } from '../../../../auth/state/auth.selector';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import { AuthActions } from '../../auth/state/auth.actions';
+import { AuthActions } from '../../../../auth/state/auth.actions';
 
 @Component({
   selector: 'app-navbar',
