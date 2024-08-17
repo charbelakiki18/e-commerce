@@ -10,27 +10,48 @@
             <p>Enter your details below</p>
             <div>
             <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-            <input id="first-name" type="text" formControlName = "Firstname" placeholder="First Name">
-            <div *ngIf="Firstname?.invalid && (Firstname?.dirty || Firstname?.touched)" class="error">
-                <div *ngIf="Firstname?.errors?.['required']" style="color: red">First Name is required.</div>
-            </div>
-        
-            <input id="last-name" type="text" formControlName = "Lastname" placeholder="Last Name">
-            <div *ngIf="Lastname?.invalid && (Lastname?.dirty || Lastname?.touched)" class="error">
-                <div *ngIf="Lastname?.errors?.['required']" style="color: red">Last Name is required.</div>
-            </div>
-
-            <input id="email" type="email" formControlName = "Email" placeholder="Email">
-            <div *ngIf="Email?.invalid && (Email?.dirty || Email?.touched)" class="error">
-                <div *ngIf="Email?.errors?.['required']" style="color: red">Email is required.</div>
-                <div *ngIf="Email?.errors?.['email']" style="color: red">Invalid Email Format.</div>
-            </div>
-        
-            <input id="password" type="password" formControlName = "Password" placeholder="Password">
-            <div *ngIf="Password?.invalid && (Password?.dirty || Password?.touched)" class="error">
-                <div *ngIf="Password?.errors?.['required']" style="color: red">Password is required.</div>
-                <div *ngIf="Password?.errors?.['minLength']" style="color: red">Password must be at least 8 characters.</div>
-            </div>
+                <input id="first-name" type="text" formControlName = "Firstname" placeholder="First Name">
+                @if (Firstname?.invalid && (Firstname?.dirty || Firstname?.touched) && Firstname?.errors?.['required']) {
+                    <div class="error">
+                        First Name is required.
+                    </div>
+                }
+            
+                <input id="last-name" type="text" formControlName = "Lastname" placeholder="Last Name">
+                @if (Lastname?.invalid && (Lastname?.dirty || Lastname?.touched) && Lastname?.errors?.['required']) {
+                    <div class="error">
+                        Last Name is required.
+                    </div>
+                }
+    
+                <input id="email" type="email" formControlName = "Email" placeholder="Email">
+                @if (Email?.invalid && (Email?.dirty || Email?.touched)) {
+                    @if (Email?.errors?.['required']) {
+                        <div class="error">
+                            Email is required.
+                        </div>
+                    }
+                    @else {
+                        <div class="error">
+                            Invalid Email Format.
+                        </div>
+                    }
+                }
+                
+            
+                <input id="password" type="password" formControlName = "Password" placeholder="Password">
+                @if (Password?.invalid && (Password?.dirty || Password?.touched)) {
+                    @if (Password?.errors?.['required']) {
+                        <div class="error">
+                            Password is required.
+                        </div>
+                    }
+                    @else {
+                        <div class="error">
+                            Password must be at least 8 characters.
+                        </div>
+                    }
+                }
         
             <button id="acc" type="submit">Create Account</button>
             <button id="google">

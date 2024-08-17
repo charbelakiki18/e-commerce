@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { SignUpResponse } from '../models/authentication';
 import { SignInResponse } from '../models/authentication';
+import { environment } from '../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +19,17 @@ export class AuthService {
   
   signUpAdmin(signupForm: any): Observable<SignUpResponse>{
     console.log(signupForm);
-    return this.http.post<SignUpResponse>('http://173.249.40.235:5005/api/User/CreateAdminUser()',signupForm)
+    return this.http.post<SignUpResponse>(environment.adminSignUpApi ,signupForm)
   }
 
   signUp(signupForm: any): Observable<SignUpResponse>{
     console.log(signupForm);
-    return this.http.post<SignUpResponse>('http://173.249.40.235:5005/api/User/SignUp()',signupForm)
+    return this.http.post<SignUpResponse>(environment.userSignUpApi,signupForm)
   }
 
   signIn(credentials: {Username: string, Password: string}): Observable<SignInResponse>{
     console.log("InAuthService " + credentials);
-    return this.http.post<SignInResponse>('http://173.249.40.235:5005/api/User/Login()', credentials)
+    return this.http.post<SignInResponse>(environment.signInApi, credentials)
   }
 }
 

@@ -40,4 +40,12 @@ export class NavbarComponent implements OnInit{
   goToCart(){
     this.router.navigateByUrl("/cart")
   }
+
+  goToHome(){
+    this.router.navigateByUrl("/products")
+  }
+
+  goToSignUp(){
+    this.router.navigateByUrl("/signup")
+  }
 }

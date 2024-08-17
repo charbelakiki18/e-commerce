@@ -10,18 +10,24 @@
             <p>Enter your details below</p>
             <div>
             <form [formGroup]="signInForm" (ngSubmit)="onSubmit()">
-                <div *ngIf="Success === false" class="error" style="color: red">
-                    Invalid username or password.
-                </div>
+                @if (Success === false) {
+                    <div class="error">
+                        Invalid username or password.
+                    </div>
+                }
             <input id="username" type="text" formControlName = "Username" placeholder="Username">
-            <div *ngIf="Username?.invalid && (Username?.dirty || Username?.touched)" class="error">
-                <div *ngIf="Username?.errors?.['required']" style="color: red">Username is required.</div>
-            </div>
-        
+            @if (Username?.invalid && (Username?.dirty || Username?.touched) && Username?.errors?.['required']) {
+                <div class="error">
+                    Username is required.
+                </div>
+            }
+            
             <input id="password" type="password" formControlName = "Password" placeholder="Password">
-            <div *ngIf="Password?.invalid && (Password?.dirty || Password?.touched)" class="error">
-                <div *ngIf="Password?.errors?.['required']" style="color: red">Password is required.</div>
-            </div>
+            @if(Password?.invalid && (Password?.dirty || Password?.touched) && Password?.errors?.['required']){
+                <div class="error">
+                    Password is required.
+                </div>
+            }
         
             <button id="acc" type="submit" [disabled]="!signInForm.valid">Sign in</button>
             <button id="google">

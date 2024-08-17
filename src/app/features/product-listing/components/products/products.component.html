@@ -9,20 +9,27 @@
   </ul>
   <img src="Frame 560.png">
 </div>
-<div *ngIf="category != empty" id="desc">
-  <div id="cat-rectangle">
+
+@if (category != empty) {
+  <div id="desc">
+    <div id="cat-rectangle">
+    </div>
+    <div id="cat-desc">{{category}}</div>
   </div>
-  <div id="cat-desc">{{category}}</div>
-</div>
+}
+
 
 <div id="products">
-    <ul class="product" *ngFor="let product of filtered_products; trackBy: trackByFn">
+  @for (product of filtered_products; track trackByFn) {
+    <ul class="product">
       <li class="item" (click)="goToProductDetails(product.id)">
-        <img src={{product.image}} class="img" alt={{product.title}} style="background-color: #F5F5F5; padding: 20px;">
+        <img src={{product.image}} class="img" alt={{product.title}}>
         <p>{{product.title}}</p>
         <!-- <p>ID: {{product.id}}</p> -->
         <p style="color: #DB4444;">${{product.price}}</p>
         <!-- <p>Description: {{product.description}}</p> -->
       </li>
     </ul>
+  }
+    
 </div>
