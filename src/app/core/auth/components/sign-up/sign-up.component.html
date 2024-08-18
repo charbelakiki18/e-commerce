@@ -37,6 +37,11 @@
                     </div>
                 }
             }
+            @else if (success === false) {
+                <div class="error">
+                    Email already taken.
+                </div>
+            }
             
         
             <input id="password" type="password" formControlName = "Password" placeholder="Password">

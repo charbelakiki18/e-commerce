@@ -13,6 +13,7 @@ import { DataService } from './services/data.service';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit, OnDestroy{
+
   products$: Observable<Product[]>;
   public filtered_products: Product[]= [];
   public products: Product[] = [];
@@ -83,4 +84,29 @@ export class ProductsComponent implements OnInit, OnDestroy{
     this.router.navigateByUrl('/product-details')
   }
 
+  sort(value: string) {
+    if (Object.isFrozen(this.filtered_products)) {
+      this.filtered_products = [...this.filtered_products]; 
+    }
+    
+    switch(value){
+      case "p_a":
+        this.filtered_products.sort((a,b)=>a.price - b.price);
+        break;
+
+      case "p_d":
+        this.filtered_products.sort((a,b)=>b.price - a.price);
+        break;
+
+      case "t_a":
+        this.filtered_products.sort((a,b)=>a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+        break;
+
+      case "t_d":
+        this.filtered_products.sort((a,b)=>b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+        break;
+    }
+    
+    console.log(this.filtered_products);
+  }
 }

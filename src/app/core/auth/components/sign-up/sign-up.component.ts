@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -10,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent implements OnInit{
+
+  public success: boolean = true;
 
   constructor(private fb: FormBuilder, private authService:AuthService, private router:Router) {
  }
@@ -44,10 +48,20 @@ get Password() {
   onSubmit() {
     if (this.signupForm.valid) {
       console.log('Form Submitted', this.signupForm.value);
-      this.authService.signUp(this.signupForm.value).subscribe(res => {
-        console.log(res);
-        this.router.navigate(['/products']);
-      })
+      this.authService.signUp(this.signupForm.value).pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('There was an error during the sign-up process:', error);
+          if (error.status === 500) {
+            this.success = false;
+          }
+          return throwError(() => new Error('Something bad happened; please try again later.'));
+        })
+      ).subscribe({
+        next: (res) => {
+          console.log(res);
+          this.router.navigate(['/products']);
+        }
+      });
     }
   }
 }

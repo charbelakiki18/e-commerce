@@ -11,16 +11,24 @@
 </div>
 
 @if (category != empty) {
-  <div id="desc">
-    <div id="cat-rectangle">
+    <div id="desc">
+      <div id="cat-rectangle"></div>
+      <div id="cat-desc">{{category}}</div>
+      <div id="sort">
+        <label id="label">Sort By:</label>
+        <select id="filters" #filters (click)="sort(filters.value)">
+          <option value="p_a"> Price - Ascending </option>
+          <option value="p_d"> Price - Descending </option>
+          <option value="t_a"> Title - Ascending </option>
+          <option value="t_d"> Title - Descending </option>
+        </select>
+      </div>
     </div>
-    <div id="cat-desc">{{category}}</div>
-  </div>
 }
 
 
 <div id="products">
-  @for (product of filtered_products; track trackByFn) {
+  @for (product of filtered_products; track $index) {
     <ul class="product">
       <li class="item" (click)="goToProductDetails(product.id)">
         <img src={{product.image}} class="img" alt={{product.title}}>
