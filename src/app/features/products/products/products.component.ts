@@ -105,6 +105,10 @@ export class ProductsComponent implements OnInit, OnDestroy{
       case "t_d":
         this.filtered_products.sort((a,b)=>b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
         break;
+
+      case "c":
+        this.filtered_products = this.products;
+        break;
     }
     
     console.log(this.filtered_products);

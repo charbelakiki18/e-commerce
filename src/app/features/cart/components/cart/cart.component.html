@@ -39,7 +39,10 @@
         </tr>
         }
     </table>
-    <button id="subTotalBtn" (click)="getSubTotal()">Update Cart</button>
+    <div id="buttons">
+        <button id="subTotalBtn" (click)="getSubTotal()">Update Cart</button>
+        <button id="discardBtn" (click)="discardCart()">Discard Cart</button>
+    </div>
     <div id="checkout">
         <p>Cart Total</p>
         <div class="pricing">

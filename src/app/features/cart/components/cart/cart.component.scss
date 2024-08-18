@@ -72,13 +72,17 @@ table {
     margin-right: 12%;
     width: 20%;
     border: solid 1px;
-    border-color: black;
+    border-color: rgb(129, 129, 129);
+    border-radius: 10px;
     padding: 2%;
   }
 
   #subTotalBtn{
-    margin-left: 76%;
+    margin-left: 57%;
     margin-bottom: 4%;
+  }
+  #discardBtn{
+    margin-left: 8%;
   }
 
   button{
@@ -91,4 +95,12 @@ table {
     margin-left: 25%;
     border: none;
     border-radius: 7px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+#buttons{
+  display: flex;
 }

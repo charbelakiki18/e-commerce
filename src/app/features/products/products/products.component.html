@@ -1,4 +1,9 @@
 <app-navbar (messageEvent)="receiveSearch($event)"></app-navbar>
+
+<div id="desc">
+  <div id="cat-rectangle"></div>
+  <div id="cat-desc">Browse Categories</div>
+</div>
 <div id="top-container">
   <ul id="cat">
     <li #men value="men's clothing" (click)="onCategoryChange(men.getAttribute('value'))">Men's Fashion</li>
@@ -17,6 +22,7 @@
       <div id="sort">
         <label id="label">Sort By:</label>
         <select id="filters" #filters (click)="sort(filters.value)">
+          <option value="c"> Category </option>
           <option value="p_a"> Price - Ascending </option>
           <option value="p_d"> Price - Descending </option>
           <option value="t_a"> Title - Ascending </option>

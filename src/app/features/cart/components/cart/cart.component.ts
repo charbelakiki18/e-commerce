@@ -9,6 +9,10 @@ import { IcartItem } from '../../../models/cartItem.model';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnDestroy{
+discardCart() {
+  this.cart = [];
+ localStorage.removeItem("productList");
+}
 
   constructor(private cartService: CartDataService){}
 
