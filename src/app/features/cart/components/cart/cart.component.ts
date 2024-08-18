@@ -2,6 +2,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartDataService } from '../../services/cart-data.service';
 import { Product } from '../../../models/product';
 import { IcartItem } from '../../../models/cartItem.model';
+import { DataService } from '../../../products/products/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,12 +11,14 @@ import { IcartItem } from '../../../models/cartItem.model';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent implements OnDestroy{
+  search: string ="";
+
 discardCart() {
   this.cart = [];
  localStorage.removeItem("productList");
 }
 
-  constructor(private cartService: CartDataService){}
+  constructor(private cartService: CartDataService, private service: DataService, private router: Router){}
 
   ngOnDestroy(): void {
     this.cart = [];
@@ -68,6 +72,10 @@ getSubTotal(){
   }
 }
 
-
+receiveSearch($event: string){
+  this.router.navigateByUrl('/products')
+  this.search = $event;
+  this.service.setSearch(this.search);
+ }
 
 }

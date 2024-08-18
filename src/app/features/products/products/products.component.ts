@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
-import { Observable, Subscription } from 'rxjs';
+import { combineLatest, Observable, Subscription } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { ProductState } from './state/products.reducers';
 import { loadProducts } from './state/products.actions';
@@ -25,27 +25,26 @@ export class ProductsComponent implements OnInit, OnDestroy{
     this.products$ = this.store.pipe(select(state => state.products.products));
   }
 
-
-  trackByFn(index: number, item: any): number {
-    return item.id;
-  }
-
   ngOnInit(): void {
     this.store.dispatch(loadProducts());
-    this.subscription = this.products$.subscribe(data => {
-      console.log(data);
-      this.products = data;
-    });
-    this.service.search$.subscribe(data => {
-      if(data != ""){
-        this.onSearch(data);
+    
+    this.subscription = combineLatest([
+      this.products$,
+      this.service.search$
+    ]).subscribe(([products, searchTerm]) => {
+      console.log(products);
+      this.products = products;
+    
+      if (searchTerm && searchTerm !== "") {
+        this.onSearch(searchTerm);
+      } else {
+        this.onCategoryChange("all");
       }
-    })
-
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe;
+    this.subscription.unsubscribe();
   }
 
   onCategoryChange(category: String | null){

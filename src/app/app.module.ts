@@ -20,6 +20,7 @@ import { AuthGuard } from './core/auth/guards/auth-guard.guard';
 import { AuthModule } from './core/auth/auth.module';
 import { ProductsModule } from './features/products/products.module';
 import { CartModule } from './features/cart/cart.module';
+import { ProfileModule } from './features/user-settings/components/profile/profile.module';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { CartModule } from './features/cart/cart.module';
     AppComponent,
     FormComponent,
     IsAvailableChipComponent,
-    AgDeleteButtonComponent,
+    AgDeleteButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +44,7 @@ import { CartModule } from './features/cart/cart.module';
     ProductsModule,
     CartModule,
     ReactiveFormsModule,
+    ProfileModule
 ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor,

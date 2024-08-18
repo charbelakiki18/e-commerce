@@ -11,6 +11,9 @@ import { AuthActions } from '../../../../auth/state/auth.actions';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent implements OnInit{
+goToProfile() {
+ this.router.navigateByUrl('/profile')
+}
   isLoggedIn: boolean | undefined;
 
   isLogged() {
@@ -31,10 +34,6 @@ export class NavbarComponent implements OnInit{
 
   sendData(search: string) {
     this.messageEvent.emit(search)
-  }
-
-  logout(){
-    this.store.dispatch(AuthActions.logout());
   }
 
   goToCart(){

@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+<div class="profile-container">
+    <div class="profile-sidebar">
+      <div class="profile-image">
+        <img src="https://via.placeholder.com/150" alt="User Profile">
+        <h2>{{decodedToken.given_name}} {{decodedToken.family_name}}</h2>
+        <p>{{decodedToken.email}}</p>
+      </div>
+      <nav class="profile-nav">
+        <ul>
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="profile-content">
+      <!-- Personal Info -->
+      <section id="personal-info">
+        <h2>Personal Information</h2>
+        <form>
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" value={{decodedToken.given_name}}>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" value={{decodedToken.family_name}}>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value={{decodedToken.email}}>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" value="+961 00 000 000">
+          </div>
+          <button type="submit" class="btn-save">Save Changes</button>
+        </form>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings">
+        <h2>Settings</h2>
+        <form>
+          <div class="form-group">
+            <label for="password">Change Password:</label>
+            <input type="password" id="password" name="password">
+          </div>
+          <div class="form-group">
+            <label for="notifications">Email Notifications:</label>
+            <input type="checkbox" id="notifications" name="notifications" checked>
+          </div>
+          <button type="submit" class="btn-save">Update Settings</button>
+        </form>
+      </section>
+    </div>
+  </div>

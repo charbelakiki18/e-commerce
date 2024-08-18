@@ -59,19 +59,24 @@
     cursor: pointer;
 }
 
-#logout{
-    margin-left: 25px;
-    border: none;
-    background: none;
-}
-
-#logout:hover{
-    color: red;
-    cursor: pointer;
-}
-
 .nav:hover{
     cursor: pointer;
     color: red;
     transition: 0.75s;
+}
+
+#profile{
+    margin-left: 4%;
+}
+
+#pfp{
+    border: solid 1px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    background-color: rgb(92, 84, 84);
+}
+
+#pfp:hover{
+    cursor: pointer;
 }
