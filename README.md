@@ -1,3 +1,6 @@
+#Description
+This project was made as a demonstration of the Angular skills learned at the inmind.ai academy of Summer of 2024.
+
 # ECommerce
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
