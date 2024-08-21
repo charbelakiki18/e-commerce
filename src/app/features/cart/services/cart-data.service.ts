@@ -26,14 +26,27 @@ export class CartDataService {
     console.log("Removed: " + cartProduct?.id)
   }
 
-  private isInCartSubject = new BehaviorSubject<boolean>(false);
+  private isInCartSubject = new BehaviorSubject<{status: boolean, qty: number | undefined}>({status: false, qty: 0});
   isInCart$ = this.isInCartSubject.asObservable();
 
   isInCart(cartProduct: Product | undefined){
-    if(this.cart.findIndex(obj => obj?.product?.id === cartProduct?.id) != -1){
-      this.isInCartSubject.next(true);
+    let index = this.cart.findIndex(obj => obj?.product?.id === cartProduct?.id);
+    if(index != -1){
+      this.isInCartSubject.next({status: true, qty: this.cart.at(index)?.qty});
     }else{
-      this.isInCartSubject.next(false);
+      this.isInCartSubject.next({status: false, qty: 0});
+    }
+  }
+
+  modifyQty(qty: number, id: number){
+    let p: IcartItem | undefined
+    let index = this.cart.findIndex(obj => obj?.product?.id === id);
+    if(index != -1){
+      p = this.cart.at(index);
+      if(p != undefined){
+        p.qty = qty;
+      }
+      this.updateLocalStorage();
     }
   }
 

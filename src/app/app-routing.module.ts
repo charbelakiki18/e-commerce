@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: () => import('./features/products/products.module').then(m => m.ProductsModule) },
   { path: 'checkout', loadChildren: () => import('./features/cart/cart.module').then(m => m.CartModule) },
   { path: 'user', loadChildren: () => import('./features/user-settings/components/profile/profile.module').then(m => m.ProfileModule) },
-  
+  { path: 'admin', loadChildren: () => import('./features/user-settings/components/dashboard/dashboard/dashboard.module').then(m => m.DashboardModule) },
 ];
 
 @NgModule({

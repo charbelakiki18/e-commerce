@@ -11,7 +11,7 @@ import { CartDataService } from '../../cart/services/cart-data.service';
 })
 export class ProductDetailsComponent implements OnInit {
   search: string = ""
-  qty: number = 0
+  qty: number | undefined = 0
   p: Product | undefined 
   cart: (Product | undefined)[] = []
   isInCart: boolean = false
@@ -23,7 +23,8 @@ export class ProductDetailsComponent implements OnInit {
       this.p = data;
     })
     this.cartService.isInCart$.subscribe(data => {
-      this.isInCart = data;
+      this.isInCart = data.status;
+      this.qty = data.qty;
     })
     this.cartService.isInCart(this.p);
     this.service.similarProducts$.subscribe(data => {
@@ -34,9 +35,17 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   subQty(){
-    if(this.qty > 0){
-      this.qty--;
+    if(this.qty != undefined && this.qty > 1){
+        this.qty--;
     }
+    
+  }
+
+  addQty(){
+    if(this.qty != undefined){
+        this.qty++;
+    }
+    
   }
 
  receiveSearch($event: string){
@@ -46,7 +55,9 @@ export class ProductDetailsComponent implements OnInit {
  }
 
  addToCart(product: Product | undefined){
+  if(this.qty != undefined){
     this.cartService.addProduct(product, this.qty);
+  }
     this.cartService.isInCart(product);
  }
 

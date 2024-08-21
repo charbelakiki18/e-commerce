@@ -1,14 +1,17 @@
-<app-navbar></app-navbar>
+<app-navbar (messageEvent)="receiveSearch($event)"></app-navbar>
 <div class="profile-container">
     <div class="profile-sidebar">
       <div class="profile-image">
-        <img src="https://via.placeholder.com/150" alt="User Profile">
+        <img src="icon.png" alt="User Profile">
         <h2>{{decodedToken.given_name}} {{decodedToken.family_name}}</h2>
         <p>{{decodedToken.email}}</p>
       </div>
       <nav class="profile-nav">
         <ul>
           <li><a (click)="logout()">Logout</a></li>
+          @if(admin){
+            <li><a routerLink="/dashboard">Go to dashboard</a></li>
+          }
         </ul>
       </nav>
     </div>

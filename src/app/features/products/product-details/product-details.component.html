@@ -11,7 +11,7 @@
             <div id="container-qty">
                 <div id="mns" (click)="subQty()"><p>-</p></div>
                 <div id="qty"><p>{{qty}}</p></div>
-                <div id="pls" (click)="qty = qty + 1"><p>+</p></div>
+                <div id="pls" (click)="addQty()"><p>+</p></div>
             </div>
             @if (!isInCart) {
                 <button id="submit" (click)="addToCart(p)">Add to cart</button>

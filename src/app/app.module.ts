@@ -21,6 +21,8 @@ import { AuthModule } from './core/auth/auth.module';
 import { ProductsModule } from './features/products/products.module';
 import { CartModule } from './features/cart/cart.module';
 import { ProfileModule } from './features/user-settings/components/profile/profile.module';
+import { DashboardComponent } from './features/user-settings/components/dashboard/dashboard.component';
+import { DashboardModule } from './features/user-settings/components/dashboard/dashboard/dashboard.module';
 
 
 @NgModule({
@@ -28,7 +30,7 @@ import { ProfileModule } from './features/user-settings/components/profile/profi
     AppComponent,
     FormComponent,
     IsAvailableChipComponent,
-    AgDeleteButtonComponent
+    AgDeleteButtonComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { ProfileModule } from './features/user-settings/components/profile/profi
     ProductsModule,
     CartModule,
     ReactiveFormsModule,
-    ProfileModule
+    ProfileModule,
+    DashboardModule
 ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor,

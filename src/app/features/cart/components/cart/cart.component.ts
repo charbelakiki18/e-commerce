@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
-export class CartComponent implements OnDestroy{
+export class CartComponent implements OnDestroy, OnInit{
   search: string ="";
 
 discardCart() {
   this.cart = [];
  localStorage.removeItem("productList");
+ this.cartService.list$
+ window.location.reload();
 }
 
   constructor(private cartService: CartDataService, private service: DataService, private router: Router){}
@@ -29,8 +31,10 @@ discardCart() {
 
   ngOnInit(): void {
     this.cartService.list$.subscribe(data => {
-      this.cart = data;
-      console.log("received: " + this.cart.at(1)?.product?.id)
+      if(localStorage.getItem('productList') != null){
+        this.cart = data;
+      }
+      
     })
   }
 
@@ -63,6 +67,14 @@ discardCart() {
 
 getSubTotal(){
   this.subTotal = 0;
+  for(let i = 0; i<this.cart.length; i++){
+    let p: IcartItem | undefined
+    p = this.cart.at(i);
+    if(p != undefined && p.product != undefined){
+      this.cartService.modifyQty(p.qty, p.product.id );
+    }
+    
+  }
   let p;
   for(let i = 0; i<this.cart.length; i++){
      p = this.cart.at(i);

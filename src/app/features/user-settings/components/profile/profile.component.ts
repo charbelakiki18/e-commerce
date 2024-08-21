@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AuthActions } from '../../../../core/auth/state/auth.actions';
+import { DataService } from '../../../products/products/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -10,14 +12,17 @@ import { AuthActions } from '../../../../core/auth/state/auth.actions';
 export class ProfileComponent implements OnInit{
 
   decodedToken: any;
+  search: string = "";
+  admin: boolean = false;
 
 logout() {
   this.store.dispatch(AuthActions.logout());
 }
-  constructor(private store: Store){}
+  constructor(private store: Store, private service: DataService, private router: Router){}
 
   ngOnInit(): void {
     this.decodedToken = this.parseJwt(localStorage.getItem('token'))
+    this.isAdmin();
     console.log(this.decodedToken);
   }
 
@@ -32,4 +37,16 @@ logout() {
     return JSON.parse(jsonPayload);
     }
   }
+
+  receiveSearch($event: string){
+    this.router.navigateByUrl('/products')
+    this.search = $event;
+    this.service.setSearch(this.search);
+   }
+
+   isAdmin(){
+    if(this.decodedToken.realm_access.roles.includes("Admin")){
+      this.admin = true;
+    }
+   }
 }
