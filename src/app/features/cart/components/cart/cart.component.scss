@@ -1,0 +1,123 @@
+table {
+  width: 80%;
+  border-collapse: collapse;
+  margin-left: 8%;
+  margin-bottom: 4%;
+  font-size: 18px;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+thead {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+  .img{
+    height: 54px;
+    width: 54px;
+    padding: 20px;
+  }
+
+  #logo{
+    display: flex;
+  }
+
+  #logo p{
+    margin-left: 1%;
+  }
+
+  #del{
+    font-size:36px;
+  }
+
+  #arrow{
+    height: 16px;
+    width: 16px;
+  }
+
+  .material-icons:hover{
+    cursor: pointer;
+    color: #DB4444;
+  }
+
+  #container-qty{
+    display: flex;
+  }
+
+  #modify{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 8%;
+    margin-left: 8%;
+  }
+
+  #container-qty{
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+  }
+
+  .pricing{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px;
+    border-color: #bdbdbd;
+  }
+
+  #checkout{
+    margin-left: auto;
+    margin-right: 12%;
+    width: 20%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 2%;
+  }
+
+  #checkout:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+
+  #subTotalBtn{
+    margin-left: 8%;
+    
+  }
+  #discardBtn{
+    margin-left: 57%;
+    margin-bottom: 4%;
+  }
+
+  button{
+    height: fit-content;
+    width: fit-content;
+    background-color: #DB4444;
+    color: white;
+    width: 165px;
+    height: 44px;
+    margin-left: 25%;
+    border: none;
+    border-radius: 7px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+#buttons{
+  display: flex;
+}
+
+#empty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

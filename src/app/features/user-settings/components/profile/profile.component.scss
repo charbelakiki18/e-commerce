@@ -1,0 +1,155 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  .profile-container {
+    display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sidebar */
+  .profile-sidebar {
+    width: 300px;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+  }
+  
+  .profile-image {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-image img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .profile-image h2 {
+    margin: 10px 0 5px;
+  }
+  
+  .profile-nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .profile-nav li {
+    margin: 10px 0;
+  }
+  
+  .profile-nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .profile-nav a:hover {
+    background-color: #DB4444;
+    color: #fff;
+  }
+  
+  /* Content Area */
+  .profile-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .profile-content h2 {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .form-group input[type="text"],
+  .form-group input[type="email"],
+  .form-group input[type="tel"],
+  .form-group input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .btn-save {
+    padding: 10px 20px;
+    background-color: #DB4444;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-save:hover {
+    background-color: #DB4444;
+  }
+  
+  /* Order History Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table th,
+  table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  table th {
+    background-color: #DB4444;
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .profile-container {
+      flex-direction: column;
+    }
+  
+    .profile-sidebar {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .profile-content {
+      padding: 20px 0;
+    }
+  }
+
+  #settings{
+    margin-top: 4%;
+  }
+  

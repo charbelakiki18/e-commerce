@@ -1,0 +1,78 @@
+<app-navbar (messageEvent)="receiveSearch($event)"></app-navbar>
+
+<div id="desc">
+  <div id="cat-rectangle"></div>
+  <div id="cat-desc">BROWSE CATEGORIES</div>
+</div>
+<div id="top-container">
+  <ul id="cat">
+    <li #men value="men's clothing" (click)="onCategoryChange(men.getAttribute('value'))">Men's Fashion</li>
+    <li #women value="women's clothing" (click)="onCategoryChange(women.getAttribute('value'))">Woman's Fashion</li>
+    <li #elec value="electronics" (click)="onCategoryChange(elec.getAttribute('value'))">Electronics</li>
+    <li #jewl value="jewelery" (click)="onCategoryChange(jewl.getAttribute('value'))">Jewelery</li>
+    <li #all value="all" (click)="onCategoryChange(all.getAttribute('value'))">See All</li>
+  </ul>
+  <img src="Frame 560.png">
+</div>
+
+@if (category != empty) {
+    <div id="desc">
+      <div id="cat-rectangle"></div>
+      <div id="cat-desc">{{category}}</div>
+      <div id="sort">
+        <label id="label">Sort By:</label>
+        <select id="filters" #filters (click)="sort(filters.value)">
+          <option value="c"> Category </option>
+          <option value="p_a"> Price - Ascending </option>
+          <option value="p_d"> Price - Descending </option>
+          <option value="t_a"> Title - Ascending </option>
+          <option value="t_d"> Title - Descending </option>
+        </select>
+      </div>
+    </div>
+}
+
+
+<div id="products">
+  @for (product of filtered_products; track $index) {
+    <ul class="product">
+      <li class="item" (click)="goToProductDetails(product.id)">
+        <img src={{product.image}} class="img" alt={{product.title}}>
+        <p>{{product.title}}</p>
+        <!-- <p>ID: {{product.id}}</p> -->
+        <p style="color: #DB4444;">${{product.price}}</p>
+        <!-- <p>Description: {{product.description}}</p> -->
+      </li>
+    </ul>
+  }
+    
+</div>
+<footer>
+  <div class="footer-container">
+      <div class="footer-section about">
+          <h3>About Us</h3>
+          <p>We are a leading e-commerce platform providing a wide range of products to meet your needs. Quality and customer satisfaction are our top priorities.</p>
+      </div>
+
+      <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+              <li><a>Home</a></li>
+              <li><a>Contact</a></li>
+              <li><a>About</a></li>
+              <li><a routerLink="/signup">Sign Up</a></li>
+          </ul>
+      </div>
+
+      <div class="footer-section contact">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> 123 E-commerce St, Online City</p>
+          <p><i class="fas fa-phone-alt"></i> +961 81 890 797</p>
+          <p><i class="fas fa-envelope"></i> charbelakiki18&#64;gmail.com</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+      <p>&copy; 2024 E-commerce Website. All Rights Reserved.</p>
+  </div>
+</footer>
+
