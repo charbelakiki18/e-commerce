@@ -7,13 +7,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+  styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit{
 
   decodedToken: any;
   search: string = "";
   admin: boolean = false;
+
 
 logout() {
   this.store.dispatch(AuthActions.logout());

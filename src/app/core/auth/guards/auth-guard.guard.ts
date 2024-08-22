@@ -1,6 +1,5 @@
-import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot, CanActivate} from '@angular/router';
-import { inject, Injectable } from '@angular/core';
-import { AuthService } from '../services/auth.service'; 
+import { Router, CanActivate} from '@angular/router';
+import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map, Observable, take } from 'rxjs';
 import { selectIsLoggedIn } from '../state/auth.selector';
